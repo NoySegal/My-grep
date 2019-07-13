@@ -1,6 +1,6 @@
 #include "init.h"
 
-grep_option reset() {
+grep_option reset_options() {
 	grep_option todo;
 	todo.i = 0;
 	todo.A = 0;
@@ -16,7 +16,7 @@ grep_option reset() {
 }
 
 grep_option set_options(char *argv[]) {
-	grep_option my_options = reset();
+	grep_option my_options = reset_options();
 	int i = 1;
 	while(argv[i] != NULL) {
 		if (strcmp(argv[i], "-i") == 0) {
@@ -47,6 +47,14 @@ grep_option set_options(char *argv[]) {
 	if (strchr(argv[my_options.count +1], '\\') != NULL) {
 		my_options.E = true;
 	}
-	printf("%d\n", my_options.count);
 	return my_options;
+}
+
+print_param init_parameters(print_param parameter) {
+	parameter.line_num = 1;
+	parameter.c_count = 0;
+	parameter.b_byteCount = 0;
+	parameter.A_count = -1;
+	parameter.previous_is_print = false;
+	return parameter;
 }

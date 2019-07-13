@@ -19,7 +19,26 @@ typedef struct grep_options {
 	int count;
 } grep_option;
 
-grep_option reset();
+typedef struct line_info {
+	char *content;
+	int number;
+	int offset;
+	int length;
+	bool match;
+	bool is_print;
+	ssize_t is_eof;
+} line;
+
+typedef struct print_parameters {
+	int line_num;
+	int c_count;
+	int b_byteCount;
+	int A_count;
+	bool previous_is_print;
+} print_param;
+
+grep_option reset_options();
 grep_option set_options(char *argv[]);
+print_param init_parameters(print_param parameter);
 
 #endif
