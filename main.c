@@ -9,6 +9,16 @@ line read_line(FILE *file_ptr) {
 	return this_line;
 }
 
+bool is_found(line sentence, char *pattern) {
+	return strstr(sentence.content, pattern);
+}
+
+void print(line sentence) {
+	if (sentence.is_print && sentence.is_eof != -1) {
+		printf("%s", sentence.content);
+	}
+}
+
 int main(int argc, char *argv[]) {
 	grep_option options;
 	line present_line;
@@ -27,6 +37,8 @@ int main(int argc, char *argv[]) {
 		if (present_line.is_eof == -1) {
 			break;
 		}
+		present_line.is_print = is_found(present_line, expression);
+		print(present_line);
 	}
 	fclose(stream);
 	return 0;
