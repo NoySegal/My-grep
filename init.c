@@ -50,11 +50,12 @@ grep_option set_options(char *argv[]) {
 	return my_options;
 }
 
-print_param init_parameters(print_param parameter) {
-	parameter.line_num = 1;
-	parameter.c_count = 0;
-	parameter.b_byteCount = 0;
-	parameter.A_count = -1;
-	parameter.previous_is_print = false;
-	return parameter;
+print_param init_parameters() {
+	print_param new_set;
+	new_set.line_num = 1;
+	new_set.prev_print = false;
+	new_set.b_byte_count = 0;
+	new_set.c_match_count = 0;
+	new_set.A_count = -1;
+	return new_set;
 }

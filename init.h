@@ -31,14 +31,13 @@ typedef struct line_info {
 
 typedef struct print_parameters {
 	int line_num;
-	int c_count;
-	int b_byteCount;
+	bool prev_print;
+	int b_byte_count;
+	int c_match_count;
 	int A_count;
-	bool previous_is_print;
 } print_param;
 
-grep_option reset_options();
 grep_option set_options(char *argv[]);
-print_param init_parameters(print_param parameter);
+print_param init_parameters();
 
 #endif
