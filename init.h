@@ -12,7 +12,7 @@ typedef struct grep_options {
 	int A_num;
 	bool b;
 	bool c;
-	bool V;
+	bool v;
 	bool n;
 	bool x;
 	bool E;

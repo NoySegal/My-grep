@@ -7,7 +7,7 @@ grep_option reset_options() {
 	todo.A_num = 0;
 	todo.b = 0;
 	todo.c = 0;
-	todo.V = 0;
+	todo.v = 0;
 	todo.n = 0;
 	todo.x = 0;
 	todo.E = 0;
@@ -30,8 +30,8 @@ grep_option set_options(char *argv[]) {
 			my_options.b = true;
 		} else if (strcmp(argv[i], "-c") == 0) {
 			my_options.c = true;
-		} else if (strcmp(argv[i], "-V") == 0) {
-			my_options.V = true;
+		} else if (strcmp(argv[i], "-v") == 0) {
+			my_options.v = true;
 		} else if (strcmp(argv[i], "-n") == 0) {
 			my_options.n = true;
 		} else if (strcmp(argv[i], "-x") == 0) {
