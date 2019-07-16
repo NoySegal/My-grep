@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct grep_options {
+typedef struct switches {
 	bool i;
 	bool A;
 	int A_num;
@@ -17,7 +17,7 @@ typedef struct grep_options {
 	bool x;
 	bool E;
 	int count;
-} grep_option;
+} switches;
 
 typedef struct line_info {
 	char *content;
@@ -37,7 +37,7 @@ typedef struct print_parameters {
 	int A_count;
 } print_param;
 
-grep_option set_options(char *argv[]);
+switches set_options(char *argv[]);
 print_param init_parameters();
 
 #endif

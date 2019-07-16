@@ -1,7 +1,7 @@
 #include "init.h"
 
-grep_option reset_options() {
-	grep_option todo;
+switches reset_options() {
+	switches todo;
 	todo.i = 0;
 	todo.A = 0;
 	todo.A_num = 0;
@@ -15,8 +15,8 @@ grep_option reset_options() {
 	return todo;
 }
 
-grep_option set_options(char *argv[]) {
-	grep_option my_options = reset_options();
+switches set_options(char *argv[]) {
+	switches my_options = reset_options();
 	int i = 1;
 	while(argv[i] != NULL) {
 		if (strcmp(argv[i], "-i") == 0) {
