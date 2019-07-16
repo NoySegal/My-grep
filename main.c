@@ -9,8 +9,23 @@ line read_line(FILE *file_ptr) {
 	return this_line;
 }
 
-void print(line sentence) {
-	if (sentence.is_print && sentence.is_eof != -1) {
+int byte_count (FILE *file_ptr, char *pattern) {
+	int byte_count = 0;
+	for (int i = 0; pattern[i] != '\n' && feof(file_ptr) == 0; i++) {
+		byte_count++;
+	}
+	byte_count++;
+	return byte_count;
+}
+
+void print(line sentence, switches options, print_param *print_parameters) {
+	if (options.n == true && options.b == true) {
+		printf("%d:%d:%s", print_parameters->line_num, print_parameters->b_byte_count, sentence.content);
+	} else if (options.n == true) {
+		printf("%d:%s", print_parameters->line_num, sentence.content);
+	} else if (options.b == true) {
+		printf("%d:%s", print_parameters->b_byte_count, sentence.content);
+	} else {
 		printf("%s", sentence.content);
 	}
 }
@@ -22,36 +37,48 @@ void free_resources(line curr_line, FILE *file_ptr) {
 	fclose(file_ptr);
 }
 
-line update_line(line curr_line, grep_option options, print_param settings, char *pattern) {
-	curr_line.number = settings.line_num;
-	curr_line.offset = settings.b_byte_count;
+line update_line(line curr_line, switches options, print_param *print_parameters, char *pattern) {
+	curr_line.number = print_parameters->line_num;
+	curr_line.offset = print_parameters->b_byte_count;
 	curr_line.length = strlen(curr_line.content);
 	curr_line.match = match_by_criteria(curr_line.content, options, pattern);
-	curr_line.is_print = print_by_criteria(curr_line, settings, options);
-	print(curr_line);
+	//curr_line.is_print = 
 	return curr_line;
 }
 
+print_param update_print_parameters(switches options, line curr_line, print_param print_parameters, FILE* file_ptr) {
+	print_parameters.line_num++;
+	print_parameters.prev_print = curr_line.is_print;
+	print_parameters.b_byte_count += byte_count(file_ptr ,curr_line.content);
+	return print_parameters;
+}
+
 int main(int argc, char *argv[]) {
-	grep_option options;
+	switches options;
 	line present_line;
-	print_param print_settings = init_parameters();
+	print_param print_parameters = init_parameters();
 	options = set_options(argv);
-	char *expression = argv[options.count + 1];
+	char *pattern = argv[options.count + 1];
 	FILE *stream = fopen(argv[options.count + 2], "r");
 	if (stream == NULL && argv[options.count + 2] == NULL) {
 		stream = stdin;
-	}
-	if (stream == NULL) {
-		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
-		exit(1);
 	}
 	while (feof(stream) == 0) {
 		present_line = read_line(stream);
 		if (present_line.is_eof == -1) {
 			break;
 		}
-		present_line = update_line(present_line, options, print_settings, expression);
+		present_line = update_line(present_line, options, &print_parameters, pattern);
+		if (present_line.match == true) {
+			if (options.c == false) {
+				print(present_line, options, &print_parameters);
+			}
+			print_parameters.c_match_count++;
+		}
+		print_parameters = update_print_parameters(options, present_line, print_parameters, stream);
+	}
+	if (options.c == true) {
+		printf("%d\n", print_parameters.c_match_count);
 	}
 	return 0;
 }
