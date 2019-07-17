@@ -15,7 +15,7 @@ switches reset_options() {
 	return todo;
 }
 
-switches set_options(char *argv[]) {
+switches set_switch_args(char *argv[]) {
 	switches my_options = reset_options();
 	int i = 1;
 	while(argv[i] != NULL) {
@@ -50,12 +50,13 @@ switches set_options(char *argv[]) {
 	return my_options;
 }
 
-print_param init_parameters() {
-	print_param new_set;
-	new_set.line_num = 1;
-	new_set.prev_print = false;
-	new_set.b_byte_count = 0;
-	new_set.c_match_count = 0;
-	new_set.A_count = -1;
-	return new_set;
+line init_line() {
+	line new_line;
+	new_line.content = NULL;
+	new_line.number = 1;
+	new_line.offset = 0;
+	new_line.match = false;
+	new_line.A_count = 0;
+	new_line.is_eof = -1;
+	return new_line;
 }
