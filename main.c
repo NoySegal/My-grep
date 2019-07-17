@@ -35,6 +35,9 @@ line update_line(line curr_line, switches switch_arg, char *pattern) {
 			curr_line.A_count--;
 		}
 	}
+	if (curr_line.content) {
+		free(curr_line.content);
+	}
 	return curr_line;
 }
 
@@ -59,7 +62,7 @@ int main(int argc, char *argv[]) {
 				print(present_line, switch_arg);
 			}
 			match_count++;
-		} else if (present_line.A_count > 0) {
+		} else if (present_line.A_count > 0 && switch_arg.c == false) {
 			print(present_line, switch_arg);
 		}
 		present_line = update_line(present_line, switch_arg, pattern);
@@ -67,5 +70,6 @@ int main(int argc, char *argv[]) {
 	if (switch_arg.c == true) {
 		printf("%d\n", match_count);
 	}
+	free_resources(present_line, stream);
 	return 0;
 }
