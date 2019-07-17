@@ -6,14 +6,14 @@ void string_lower(char *str) {
 	}
 }
 
-bool match_by_criteria(char *content, switches options, char *pattern) {
+bool is_match(char *content, switches switch_arg, char *pattern) {
 	bool match = false;
 	char *content_dup = strdup(content);
-	if (options.i == true) {
+	if (switch_arg.i == true) {
 		string_lower(content_dup);
 		string_lower(pattern);
 	}
-	if (options.x == true) {
+	if (switch_arg.x == true) {
 		*strchr(content_dup, '\n') = '\0';
 		if (strcmp(content_dup, pattern) == 0) {
 			match = true;
@@ -24,7 +24,7 @@ bool match_by_criteria(char *content, switches options, char *pattern) {
 		}
 	}
 	free(content_dup);
-	if (options.v == true) {
+	if (switch_arg.v == true) {
 		return !match;
 	}
 	return match;

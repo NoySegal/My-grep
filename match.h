@@ -4,6 +4,6 @@
 #include "init.h"
 #include <ctype.h>
 
-bool match_by_criteria(char *content, switches options, char *pattern);
+bool is_match(char *content, switches options, char *pattern);
 
 #endif
