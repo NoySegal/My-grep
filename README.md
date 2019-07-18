@@ -1,4 +1,4 @@
-# My-grep
+# My grep
 Custom implementation for the Unix [grep](https://en.wikipedia.org/wiki/Grep) command as a command-line utility for searching datasets in files.
 
 ## Getting Started
