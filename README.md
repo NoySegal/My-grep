@@ -84,7 +84,7 @@ Running: ./my\_grep -n -i "o\.pdf" test.html
 
 Where **test.html** contains:
 
-'''html
+```html
 <HTML>
 <HEAD>
 <TITLE>Just a Test (Simple)</TITLE>
@@ -97,13 +97,13 @@ Where **test.html** contains:
 <li> <a href="FileIO.pdf">I/O and files in C</a>
 
 </ul>
-'''
+```
 
 Will print:
 
-'''html
+```html
 8:<li> <a href="intro.pdf">Revisiting</a>
 10:<li> <a href="FileIO.pdf">I/O and files in C</a>
-'''
+```
 
 
