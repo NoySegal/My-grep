@@ -90,11 +90,11 @@ Where **test.html** contains:
 <TITLE>Just a Test (Simple)</TITLE>
 </HEAD>
 <body>
-<h1>Website headline in h1</h1>
+  <h1>Website headline in h1</h1>
 <ul>
-<li> <a href="intro.pdf">Revisiting</a>
-<li> <a href="Mudularity.docx">Modularity</a>
-<li> <a href="FileIO.pdf">I/O and files in C</a>
+  <li> <a href="intro.pdf">Revisiting</a>
+  <li> <a href="Mudularity.docx">Modularity</a>
+< li> <a href="FileIO.pdf">I/O and files in C</a>
 
 </ul>
 ```
