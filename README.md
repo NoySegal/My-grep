@@ -49,7 +49,7 @@ gcc main.c init.c match.c -o my_grep -Wall
 
 ### Usage
 
-##### The program accepts two arguments: an expression and a file name. In any case that no file name was provided, then it will be read from the stdin. The program scans the file line-by-line and prints only the lines where the expression appears.
+#### The program accepts two arguments: an expression and a file name. In any case that no file name was provided, then it will be read from the stdin. The program scans the file line-by-line and prints only the lines where the expression appears.
 
 #### Parameters (can be provided simultaneously)
 
@@ -94,7 +94,7 @@ Where **test.html** contains:
 <ul>
   <li> <a href="intro.pdf">Revisiting</a>
   <li> <a href="Mudularity.docx">Modularity</a>
-< li> <a href="FileIO.pdf">I/O and files in C</a>
+  <li> <a href="FileIO.pdf">I/O and files in C</a>
 
 </ul>
 ```
