@@ -71,7 +71,7 @@ Searching for the special characters: \|{}[] will have to be escaped by a backsl
 
 The search for regular expressions must be preceded by **-E** flag. Where the expression should be surrounded by quotation marks. The supported regex types are:
 
-* **(str1|str2)** Which stands for look for either str1 or str2.
+* **(str1|str2)** Which looks for either str1 or str2.
 * **.** (a dot) Matches any literal character c. Dots can't appear inside parenthesis.
 * **[x-y]** Matches for any character between x and y (including).
 * **^** Matches the beginning of the input string.
