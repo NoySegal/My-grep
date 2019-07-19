@@ -80,7 +80,7 @@ The search for regular expressions must be preceded by **-E** flag. Where the ex
 
 ### Example
 
-Running: ./my\_grep -n -i "o\.pdf" test.html
+Running: ./my\_grep -n -i "o\\.pdf" test.html
 
 Where **test.html** contains:
 
